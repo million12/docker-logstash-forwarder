@@ -1,7 +1,7 @@
 FROM million12/centos-supervisor
 MAINTAINER Przemyslaw Ozgo <linux@ozgo.info>
 
-ADD forwarder.conf /etc/forwarder.conf
+ADD forwarder.conf /etc/forwarder/forwarder.conf
 
 RUN \
 yum update -y && \
