@@ -10,7 +10,15 @@ Host OS log directory need to be shared with the docker container into /data/log
 
 
 ####RUN
-`docker run -d --name logstash-forwarder -v /opt/ssl:/opt/logstash-forwarder/ssl -v /var/log:/data/log million12/logstash-forwarder`
+Option 1: Run on the same host as logstash server
+
+`docker run -d --name logstash-forwarder --volumes-from=logstash -v /var/log:/data/log million12/logstash-forwarder`
+
+Option2: Run on dofferent host than logstash server 
+
+`docker run -d --name logstash-forwarder -v /dir_with_ssl/:/opt/logstash/ssl -v /var/log:/data/log million12/logstash-forwarder`
+
+FYI: Make sure you have copies of certificates from logstash server. 
 
 ####Logging
 If you need to log more thean just system.log please edit forwarder.conf file accordigly to logstash/forwarder manual. <a href="http://logstash.net/docs/1.4.2/">LINK</a>
