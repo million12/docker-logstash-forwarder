@@ -2,6 +2,9 @@ FROM million12/centos-supervisor
 MAINTAINER Przemyslaw Ozgo <linux@ozgo.info>
 
 ADD forwarder.conf /etc/forwarder/forwarder.conf
+ADD env.sh /config/init/env.sh
+
+ENV LOGSTASH_IP 127.0.0.1
 
 RUN \
 yum update -y && \

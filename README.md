@@ -8,15 +8,17 @@ Host OS log directory need to be shared with the docker container into /data/log
 
 `-v /var/log:/data/log`
 
+#### Logstash IP (Environmental Variable) 
+Use $LOGSTASH_IP environmental variable to redirect data to logstash server. 
 
 ####RUN
 Option 1: Run on the same host as logstash server
 
-`docker run -d --name logstash-forwarder --volumes-from=logstash -v /var/log:/data/log million12/logstash-forwarder`
+`docker run -d --name logstash-forwarder -e LOGSTASH_IP=logstash_server_ip --volumes-from=logstash -v /var/log:/data/log million12/logstash-forwarder`
 
 Option2: Run on dofferent host than logstash server 
 
-`docker run -d --name logstash-forwarder -v /dir_with_ssl/:/opt/logstash/ssl -v /var/log:/data/log million12/logstash-forwarder`
+`docker run -d --name logstash-forwarder -e LOGSTASH_IP=logstash_server_ip -v /dir_with_ssl/:/opt/logstash/ssl -v /var/log:/data/log million12/logstash-forwarder`
 
 FYI: Make sure you have copies of certificates from logstash server. 
 
@@ -31,7 +33,7 @@ Remember to use exact name (forwarder.conf).
 
 Full command with custom log settings:
 
-`docker run -d --name logstash-forwarder -v /opt/ssl:/opt/logstash-forwarder/ssl -v /var/log:/data/log -v /your-dir:/etc/forwarder/ million12/logstash-forwarder`
+`docker run -d --name logstash-forwarder -e LOGSTASH_IP=logstash_server_ip -v /opt/ssl:/opt/logstash-forwarder/ssl -v /var/log:/data/log -v /your-dir:/etc/forwarder/ million12/logstash-forwarder`
 
 #### forwarder.conf
 Make sure you edited your forwarder.conf to send data to your logstash server. Edit IP. 
