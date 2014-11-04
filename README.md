@@ -39,3 +39,7 @@ Full command with custom log settings:
 Make sure you edited your forwarder.conf to send data to your logstash server. Edit IP. 
 By Default IP is set to localhost.
 
+
+---
+
+**Sponsored by** [Typostrap.io - the new prototyping tool](http://typostrap.io/) for building highly-interactive prototypes of your website or web app. Built on top of TYPO3 Neos CMS and Zurb Foundation framework.
