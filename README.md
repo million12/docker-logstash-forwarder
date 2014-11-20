@@ -1,10 +1,10 @@
 #### Logstash-Forwarder Docker Image
-Build on official logstash-forwarder repo and switched to ISSUE-221 branch to fix ssl problem. 
+Build from official logstash-forwarder repo and switched to ISSUE-221 branch to fix ssl problem. 
 
 #### Directories
 Make sure your logstash-server ssl certificates are placed in /opt/ssl directory. 
 
-Host OS log directory need to be shared with the docker container into /data/logs:
+Host OS log directory needs to be shared with the docker container on /data/logs:
 
 `-v /var/log:/data/log`
 
@@ -16,16 +16,16 @@ Option 1: Run on the same host as logstash server
 
 `docker run -d --name logstash-forwarder -e LOGSTASH_IP=logstash_server_ip --volumes-from=logstash -v /var/log:/data/log million12/logstash-forwarder`
 
-Option2: Run on dofferent host than logstash server 
+Option2: Run on different host than logstash server 
 
 `docker run -d --name logstash-forwarder -e LOGSTASH_IP=logstash_server_ip -v /dir_with_ssl/:/opt/logstash/ssl -v /var/log:/data/log million12/logstash-forwarder`
 
 FYI: Make sure you have copies of certificates from logstash server. 
 
 ####Logging
-If you need to log more thean just system.log please edit forwarder.conf file accordigly to logstash/forwarder manual. <a href="http://logstash.net/docs/1.4.2/">LINK</a>
+If you need to log more than just system.log please edit forwarder.conf file according the <a href="http://logstash.net/docs/1.4.2/">logstash/forwarder manual</a>.
 
-Otherwise you can mount directory with your host specific forwarder.conf using command -v.
+Otherwise you can mount the directory with your host specific forwarder.conf using command -v.
 
 `-v /your-dir:/etc/forwarder/`
 
