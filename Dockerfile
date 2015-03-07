@@ -11,7 +11,6 @@ RUN \
     cd /opt && \
     git clone git://github.com/elasticsearch/logstash-forwarder.git && \
     cd /opt/logstash-forwarder/ && \
-    git checkout ISSUE-221 && \
     go build
 
 COPY container-files /
