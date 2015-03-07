@@ -1,17 +1,18 @@
 FROM centos:centos7
 MAINTAINER Marcin Ryzycki marcin@m12.io, Przemyslaw Ozgo linux@ozgo.info
 
-ENV LOGSTASH_IP 127.0.0.1
-
 RUN \
     yum update -y && \
-    yum install -y golang git && \
+    yum install -y golang git wget && \
     yum clean all && \
     mkdir -p /opt/logstash/ssl && \
-    cd /opt && \
-    git clone git://github.com/elasticsearch/logstash-forwarder.git && \
+    mkdir -p /opt/logstash-forwarder && \
+    wget https://github.com/elasticsearch/logstash-forwarder/archive/v0.4.0.tar.gz && \
+    tar zxvf v0.4.0.tar.gz -C /opt/logstash-forwarder --strip-components=1 && \
     cd /opt/logstash-forwarder/ && \
     go build
+
+ENV LOGSTASH_IP 127.0.0.1
 
 COPY container-files /
 
