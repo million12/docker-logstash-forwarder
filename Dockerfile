@@ -3,7 +3,7 @@ MAINTAINER Marcin Ryzycki marcin@m12.io, Przemyslaw Ozgo linux@ozgo.info
 
 RUN \
     yum update -y && \
-    yum install -y golang git wget && \
+    yum install -y golang git wget tar && \
     yum clean all && \
     mkdir -p /opt/logstash/ssl && \
     mkdir -p /opt/logstash-forwarder && \
