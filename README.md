@@ -1,6 +1,7 @@
 ### Logstash-Forwarder Docker Image
 [Logstash Forwarder](https://github.com/elasticsearch/logstash-forwarder) [Docker Image](https://registry.hub.docker.com/u/million12/logstash-forwarder/) for logstash/elasticsearch logging deployments. 
-Build from official logstash-forwarder repo and switched to ISSUE-221 branch to fix ssl problem. 
+Build from official logstash-forwarder repo and locked to release `v0.4.0`.  
+Image was stripped down from not needed packages and from being ~650M now it's only ~335M 
 
 ### SSL Certificates and Log Files 
 Logstash server ssl certificates need to be placed in `/etc/logstash/ssl/` directory. 
